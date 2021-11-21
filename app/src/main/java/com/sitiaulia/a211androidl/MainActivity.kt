@@ -1,5 +1,6 @@
 package com.sitiaulia.a211androidl
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -22,9 +23,16 @@ class MainActivity : AppCompatActivity() {
 
         simpanBt.setOnClickListener {
             val nama = namaEt.text.toString()
+            val email = emailEt.text.toString()
             var sks = sksEt.text.toString().toInt()
             sks = 160 - sks
             Toast.makeText(this, "Sisa SKS... $sks", Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(this, ResultActivity::class.java)
+            intent.putExtra("nama", nama)
+            intent.putExtra("email", email)
+            intent.putExtra("sks", sks)
+            startActivity(intent)
         }
 
         batalBt.setOnClickListener {
